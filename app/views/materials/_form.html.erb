@@ -1,0 +1,51 @@
+<!-- app/views/materials/_form.html.erb -->
+
+<%= form_with(model: material, local: true) do |form| %>
+  <% if material.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(material.errors.count, "error") %> prohibited this material from being saved:</h2>
+
+      <ul>
+        <% material.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :efficiency %>
+    <%= form.number_field :efficiency %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cost %>
+    <%= form.number_field :cost %>
+  </div>
+
+  <!-- Utilisation de collection_select pour permettre à un matériau d'être vendu par plusieurs fournisseurs -->
+  <div class="field">
+    <%= form.label :supplier_ids, 'Select Suppliers' %>
+    <%= form.collection_select(:supplier_ids, Supplier.all, :id, :name, {}, { multiple: true }) %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
