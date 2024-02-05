@@ -44,6 +44,6 @@ class SuppliersController < ApplicationController
   end
 
   def supplier_params
-    params.require(:supplier).permit(:name, :location)
+    params.require(:supplier).permit(:name, :location, material_ids: [])
   end
 end

@@ -44,6 +44,7 @@ class MaterialsController < ApplicationController
   end
 
   def material_params
-    params.require(:material).permit(:name, :description)
+    params.require(:material).permit(:name, :description,:category, :efficiency,
+    :cost, supplier_ids: [])
   end
 end

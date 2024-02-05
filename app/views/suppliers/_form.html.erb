@@ -23,7 +23,14 @@
     <%= form.text_field :location %>
   </div>
 
+  <!-- Champ pour ajouter un matériau à un fournisseur -->
+  <div class="field">
+    <%= form.label :material_ids, 'Select Materials' %>
+    <%= form.collection_select(:material_ids, Material.all, :id, :name, {}, { multiple: true }) %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
