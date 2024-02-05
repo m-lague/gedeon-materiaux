@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema[7.0].define(version: 2024_02_05_211056) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_05_212537) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "material_suppliers", force: :cascade do |t|
+    t.bigint "material_id", null: false
+    t.bigint "supplier_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["material_id"], name: "index_material_suppliers_on_material_id"
+    t.index ["supplier_id"], name: "index_material_suppliers_on_supplier_id"
+  end
+
+  create_table "materials", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "category"
+    t.integer "efficiency"
+    t.decimal "cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "ratings", force: :cascade do |t|
+    t.integer "score"
+    t.text "comment"
+    t.bigint "user_id", null: false
+    t.bigint "material_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["material_id"], name: "index_ratings_on_material_id"
+    t.index ["user_id"], name: "index_ratings_on_user_id"
+  end
+
+  create_table "suppliers", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +63,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_05_211056) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "material_suppliers", "materials"
+  add_foreign_key "material_suppliers", "suppliers"
+  add_foreign_key "ratings", "materials"
+  add_foreign_key "ratings", "users"
 end
