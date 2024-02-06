@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :ratings, dependent: :destroy
- 
+  has_many :materials
 
   enum :role, { admin: 0, free_user: 1, paying_user: 2 }
 end
