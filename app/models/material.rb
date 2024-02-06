@@ -4,8 +4,8 @@ class Material < ApplicationRecord
   has_many :material_suppliers, dependent: :destroy
   has_many :suppliers, through: :material_suppliers
 
+  belongs_to :user
 
-  
 
   def average_rating
     if ratings.any?
