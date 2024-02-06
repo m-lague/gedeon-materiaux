@@ -13,11 +13,20 @@ class RatingsController < ApplicationController
   end
 
   def create
-    @rating = Rating.new(rating_params)
-    if @rating.save
-      redirect_to @rating, notice: 'Rating was successfully created.'
+    @material = Material.find(params[:material_id])
+    existing_rating = Rating.find_by(user_id: current_user.id, material_id: @material.id)
+
+    if existing_rating
+      redirect_to @material, alert: 'Vous avez déjà voté pour ce matériau.'
     else
-      render :new
+      @rating = @material.ratings.new(rating_params)
+      @rating.user = current_user
+
+      if @rating.save
+        redirect_to @material, notice: 'Ton vote est pris en compte!'
+      else
+        render 'materials/show'
+      end
     end
   end
 

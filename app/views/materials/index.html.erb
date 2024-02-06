@@ -5,7 +5,8 @@
     <tr>
       <th>Name</th>
       <th>Description</th>
-      <th colspan="3"></th>
+      <th>Catégorie</th>
+      <th>Moyenne des scores</th>
     </tr>
   </thead>
 
@@ -14,6 +15,8 @@
       <tr>
         <td><%= material.name %></td>
         <td><%= material.description %></td>
+        <td><%= material.category %></td>
+        <td><%= material.average_rating %></td>
         <td><%= link_to 'Show', material %></td>
         <td><%= link_to 'Edit', edit_material_path(material) %></td>
         <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
