@@ -43,9 +43,8 @@
     <%= form.label :supplier_ids, 'Select Suppliers' %>
     <%= form.collection_select(:supplier_ids, Supplier.all, :id, :name, {}, { multiple: true }) %>
   </div>
-
+ 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
-

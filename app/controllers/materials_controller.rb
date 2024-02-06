@@ -1,4 +1,5 @@
 class MaterialsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
   before_action :set_material, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -16,6 +17,7 @@ class MaterialsController < ApplicationController
 
   def create
     @material = Material.new(material_params)
+
     if @material.save
       redirect_to @material, notice: 'Material was successfully created.'
     else
