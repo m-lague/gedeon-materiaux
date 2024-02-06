@@ -1,7 +1,7 @@
 class SuppliersController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  
 
   def index
     @suppliers = policy_scope(Supplier)

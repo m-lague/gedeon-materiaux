@@ -1,7 +1,7 @@
 class MaterialsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_material, only: [:show, :edit, :update, :destroy]
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  
 
   def index
     @materials = policy_scope(Material)

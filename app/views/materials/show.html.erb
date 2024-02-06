@@ -1,31 +1,32 @@
 <p id="notice"><%= notice %></p>
+<div class="text-start">
+  <p>
+    <strong>Name:</strong>
+    <%= @material.name %>
+  </p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @material.name %>
-</p>
+  <p>
+    <strong>Description:</strong>
+    <%= @material.description %>
+  </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @material.description %>
-</p>
+  <p>
+    <strong>Category:</strong>
+    <%= @material.category %>
+  </p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @material.category %>
-</p>
+  <p>
+    <strong>Efficiency:</strong>
+    <%= @material.efficiency %>
+  </p>
 
-<p>
-  <strong>Efficiency:</strong>
-  <%= @material.efficiency %>
-</p>
+  <p>
+    <strong>Cost:</strong>
+    <%= number_to_currency(@material.cost) %>
+  </p>
+</div>
 
-<p>
-  <strong>Cost:</strong>
-  <%= number_to_currency(@material.cost) %>
-</p>
-
-<h2>Suppliers offering <%= @material.name %>:</h2>
+<h2>Fournisseurs <%= @material.name %>:</h2>
 
 <ul>
   <% @material.suppliers.each do |supplier| %>

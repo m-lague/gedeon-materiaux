@@ -1,31 +1,27 @@
-<h1>Materials</h1>
+<h1>Materiaux</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Catégorie</th>
-      <th>Moyenne des scores</th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @materials.each do |material| %>
-      <tr>
-        <td><%= material.name %></td>
-        <td><%= material.description %></td>
-        <td><%= material.category %></td>
-        <td><%= material.average_rating %></td>
-        <td><%= link_to 'Voir', material %></td>
-        <td><%= link_to "Editer", edit_material_path(material) if policy(material).update? %></td>
-        <td><%= link_to "Supprimer", material, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce matériau ?" } if policy(material).destroy? %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+  <% @materials.each do |material| %>
+    <div class="col">
+      <%= link_to material_path(material) do %>
+        <div class="card mb-3 shadow">
+          <div class="card-body">
+            <h5 class="card-title"> <%= material.name %> </h5>
+            <p class="card-text"><%= material.description %></p>
+            <div class="btn-group" role="group" aria-label="Actions">
+              <%= link_to "Modifier", edit_material_path(material), class: "btn btn-outline-warning" if policy(material).update? %>
+              <%= link_to "Supprimer", material, method: :delete, data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-outline-danger" if policy(material).destroy?%>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
-<br>
 
-<%= link_to "Nouveau Matériau", new_material_path if policy(Material).create? %>
-<%= link_to 'Suppliers', suppliers_path %>
+
+
+<%= link_to "Ajouter un Matériau", new_material_path, class: "btn btn-primary" if policy(Material).create? %>
+<%= link_to 'Fournisseurs', suppliers_path %>
