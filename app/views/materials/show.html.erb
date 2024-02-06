@@ -46,7 +46,7 @@
       </ul>
     </div>
   <% end %>
-  
+
   <div class="field">
     <%= form.label :score %>
     <%= form.number_field :score, min: 1, max: 5 %>
@@ -62,5 +62,5 @@
   </div>
 <% end %>
 
-<%= link_to 'Edit', edit_material_path(@material) %> |
+<%= link_to "Editer", edit_material_path(@material) if policy(@material).update? %>
 <%= link_to 'Back', materials_path %>

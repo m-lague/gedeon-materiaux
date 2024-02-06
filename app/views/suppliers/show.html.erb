@@ -20,5 +20,5 @@
   <% end %>
 </ul>
 
-<%= link_to 'Edit', edit_supplier_path(@supplier) %> |
+<%= link_to "Editer |", edit_supplier_path(@supplier) if policy(@supplier).update? %>
 <%= link_to 'Back', suppliers_path %>

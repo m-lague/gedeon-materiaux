@@ -16,9 +16,9 @@
       <tr>
         <td><%= supplier.name %></td>
         <td><%= supplier.location %></td>
-        <td><%= link_to 'Show', supplier %></td>
-        <td><%= link_to 'Edit', edit_supplier_path(supplier) %></td>
-        <td><%= link_to 'Destroy', supplier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Voir', supplier %></td>
+        <td><%= link_to "Editer", edit_supplier_path(supplier) if policy(supplier).update? %></td>
+        <td><%= link_to "Supprimer", supplier, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce fournisseur ?" } if policy(supplier).destroy? %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,5 +26,5 @@
 
 <br>
 
-<%= link_to 'New Supplier', new_supplier_path %>
+<%= link_to "Nouveau Fournisseur", new_supplier_path if policy(Supplier).create? %>
 <%= link_to 'Materials', materials_path %>
