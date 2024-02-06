@@ -1,15 +1,23 @@
 class MaterialPolicy < ApplicationPolicy
   class Scope < Scope
-    # NOTE: Be explicit about which records you allow access to!
     def resolve
-      scope.all
+      scope.all # Tout le monde peut voir la liste des matériaux
     end
   end
-  def edit?
-    user.admin?  # Seuls les administrateurs peuvent éditer un matériau
+
+  def create?
+    user.present? # Un utilisateur connecté peut créer un matériel
+  end
+
+  def show?
+    true # Tout le monde peut voir un matériau
+  end
+
+  def update?
+    user && user.admin? # Seuls les administrateurs peuvent mettre à jour un matériel
   end
 
   def destroy?
-    user.admin?  # Seuls les administrateurs peuvent supprimer un matériau
+    user && user.admin? # Seuls les administrateurs peuvent supprimer un matériel
   end
 end

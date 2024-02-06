@@ -17,9 +17,9 @@
         <td><%= material.description %></td>
         <td><%= material.category %></td>
         <td><%= material.average_rating %></td>
-        <td><%= link_to 'Show', material %></td>
-        <td><%= link_to 'Edit', edit_material_path(material) %></td>
-        <td><%= link_to 'Destroy', material, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Voir', material %></td>
+        <td><%= link_to "Editer", edit_material_path(material) if policy(material).update? %></td>
+        <td><%= link_to "Supprimer", material, method: :delete, data: { confirm: "Êtes-vous sûr de vouloir supprimer ce matériau ?" } if policy(material).destroy? %></td>
       </tr>
     <% end %>
   </tbody>
@@ -27,5 +27,5 @@
 
 <br>
 
-<%= link_to 'New Material', new_material_path %>
+<%= link_to "Nouveau Matériau", new_material_path if policy(Material).create? %>
 <%= link_to 'Suppliers', suppliers_path %>
