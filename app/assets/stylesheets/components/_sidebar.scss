@@ -3,11 +3,14 @@
   background-color: #32573B;
   position: sticky;
   top: 0;
+  left: 0;
   width: 248px;
   color: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  transition: transform 0.3s ease;
+  transform: translateX(0);
 
   a{
     text-decoration: none;
@@ -40,6 +43,9 @@
     flex-direction: column;
     padding-left: 0px;
   }
+}
+.burger-menu {
+  display: none; /* Par défaut, le menu burger est caché */
 }
 
 .step {
@@ -125,4 +131,13 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 16px;
+}
+@media (max-width: 650px) {
+  .sidebar {
+    transform: translateX(-250px); /* Déplace la barre latérale en dehors de l'écran sur les petits écrans */
+  }
+
+  .burger-menu {
+    display: block; /* Affiche le menu burger sur les petits écrans */
+  }
 }

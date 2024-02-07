@@ -16,8 +16,10 @@
 
       <%# <p class="notice"><%= notice %>
     <div class="main-container">
-      <div id="sidebar">
-        <%= image_tag "logo.png", id: "logo" %>
+      <div class ="sidebar" id="sidebar">
+        <%=link_to "https://gedeon.guide" do %>
+          <%= image_tag "logo.png", id: "logo" %>
+        <%end%>
         <ul>
           <li><%= link_to 'Materiaux', materials_path, class: "step btn btn-menu" %></li>
           <li><%= link_to 'Fournisseurs', suppliers_path, class: "step btn btn-menu" %></li>
@@ -30,6 +32,10 @@
                 <%# rectangle vert %>
           </div>
         </ul>
+      </div>
+      <div class="burger-menu" id="burger-menu">
+        <!-- Menu burger -->
+        <button onclick="toggleSidebar()">☰ Menu</button>
       </div>
       <div class="content-container">
         <p class="alert"><%= alert %></p>

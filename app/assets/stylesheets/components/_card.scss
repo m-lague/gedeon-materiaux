@@ -12,7 +12,9 @@
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 0px 1px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
   padding: 16px 16px 32px;
-  margin: 12px 0px;
+  margin: 10px;
+  flex: 1;
+  max-width: calc(33.33% - 20px);
 }
 
 .task-description {
@@ -69,4 +71,16 @@
 .check {
   width: 14px;
   height: 14px;
+}
+.card-container {
+  display: flex;
+  flex-wrap: wrap; // Permet aux éléments de passer à la ligne s'ils ne rentrent pas sur une seule ligne
+}
+@media (max-width: 768px) { // Réglez ce média query en fonction de votre breakpoint désiré pour une réactivité
+  .cartes-container {
+    flex-direction: column; // Affiche les cartes en colonne sur les petits écrans
+  }
+  .carte {
+    max-width: 100%; // Cartes à pleine largeur sur les petits écrans
+  }
 }
