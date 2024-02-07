@@ -20,7 +20,7 @@
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.rich_text_area :description %>
   </div>
 
   <div class="field">
@@ -43,8 +43,8 @@
     <%= form.label :supplier_ids, 'Select Suppliers' %>
     <%= form.collection_select(:supplier_ids, Supplier.all, :id, :name, {}, { multiple: true }) %>
   </div>
- 
+
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Envoyer", class: "btn btn-form" %>
   </div>
 <% end %>
