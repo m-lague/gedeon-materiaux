@@ -4,18 +4,34 @@
 <div class="card-container">
   <% @materials.each do |material| %>
 
-    <%= link_to material_path(material) do %>
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title"> <%= material.name %> </h5>
-          <p class="card-description"><%= material.description %></p>
 
-            <%= link_to "Modifier", edit_material_path(material), class: "btn btn-outline-warning", role: "button" if policy(material).update? %>
-            <%= link_to "Supprimer", material, method: :delete, data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-outline-danger" if policy(material).destroy?%>
 
+
+
+
+
+
+
+
+    <div class="card-product">
+      <a href="<%=material_path(material)%>">
+        <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
+        <div class="card-product-infos">
+          <h2><%= material.name %></h2>
+          <p><%= material.category %> fournis par: <% material.suppliers.each do |supplier| %>
+                                                        <%= supplier.name %> ,
+                                                        <%end%>
+          </p>
+          <!-- helpers -->
+          <%= link_edit(material) %>
+          <%= link_destroy(material) %>
         </div>
-      </div>
-    <% end %>
+      </a>
+    </div>
+
+
+
+
 
   <% end %>
 </div>

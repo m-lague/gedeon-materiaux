@@ -4,7 +4,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
- 
+  margin-left: 20px;
+  .description {
+    text-decoration: underline;
+  }
 }
 
 .content {
@@ -21,6 +24,7 @@
     line-height: 36px;
     margin-top: 8px;
   }
+
 }
 
 .step-rank {
