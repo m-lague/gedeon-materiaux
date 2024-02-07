@@ -6,6 +6,8 @@ class Material < ApplicationRecord
 
   belongs_to :user
 
+  has_rich_text :description
+
 
   def average_rating
     if ratings.any?
