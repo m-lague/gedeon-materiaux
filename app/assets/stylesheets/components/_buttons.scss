@@ -1,0 +1,29 @@
+.btn {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  color: rgba(0,0,0,0.9);
+  font-weight: 600;
+  &:hover {
+    background-color: darken($primary, 10%);
+  }
+}
+.btn-primary {
+  background-color: $primary ;
+  text-decoration: none;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+.btn-menu {
+  background-color: rgba($primary,0.1);
+  margin: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.btn-form {
+  border-style: hidden;
+  background-color: $primary;
+  width: 200px;
+  font-size: large;
+
+}
