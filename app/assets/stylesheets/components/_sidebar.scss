@@ -1,0 +1,128 @@
+#sidebar {
+  height: 100vh;
+  background-color: #32573B;
+  position: sticky;
+  top: 0;
+  width: 248px;
+  color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  a{
+    text-decoration: none;
+  }
+
+
+  li {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-weight: 600;
+    &.selected {
+      .highlight {
+        background-color: #D8F576;
+      }
+      .text {
+        background: rgba(255, 255, 255, 0.1);
+      }
+      .step-name {
+        color: white;
+      }
+      .rank {
+        background-color: #FFFFFF;
+        color: #1D3422;
+      }
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0px;
+  }
+}
+
+.step {
+
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+
+  .text {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 8px;
+    background: #32573B;
+    border-radius: 8px;
+    width: 215px;
+    margin-right: 12px;
+
+    }
+
+    .rank {
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-right: 8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.4);
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 18px;
+    border: 1.5px dashed rgba(255, 255, 255, 0.3);
+    }
+
+    .step-name {
+      color: rgba(255, 255, 255, 0.6);;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 16px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-left: 8px;
+    }
+  }
+.highlight {
+  width: 3px;
+  height: 40px;
+  left: -12px;
+  top: 0px;
+  background: #32573B;
+  border-radius: 0px 3px 3px 0px;
+}
+
+#star_in_sidebar {
+  position: absolute;
+  width: 147px;
+  top: 545px;
+  left: 122px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  position: absolute;
+  top: 605px;
+}
+.avatar {
+
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  margin: 0px 8px 0px 8px;
+}
+.account {
+  margin: 0px 8px 0px 4px;
+  color: #FFFFFF;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+}

@@ -1,22 +1,22 @@
 <h1>Materiaux</h1>
 
 
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+<div class="card-list">
   <% @materials.each do |material| %>
-    <div class="col">
-      <%= link_to material_path(material) do %>
-        <div class="card mb-3 shadow">
-          <div class="card-body">
-            <h5 class="card-title"> <%= material.name %> </h5>
-            <p class="card-text"><%= material.description %></p>
-            <div class="btn-group" role="group" aria-label="Actions">
-              <%= link_to "Modifier", edit_material_path(material), class: "btn btn-outline-warning" if policy(material).update? %>
-              <%= link_to "Supprimer", material, method: :delete, data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-outline-danger" if policy(material).destroy?%>
-            </div>
-          </div>
+
+    <%= link_to material_path(material) do %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> <%= material.name %> </h5>
+          <p class="card-description"><%= material.description %></p>
+
+            <%= link_to "Modifier", edit_material_path(material), class: "btn btn-outline-warning", role: "button" if policy(material).update? %>
+            <%= link_to "Supprimer", material, method: :delete, data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-outline-danger" if policy(material).destroy?%>
+
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
+
   <% end %>
 </div>
 
@@ -24,4 +24,3 @@
 
 
 <%= link_to "Ajouter un Matériau", new_material_path, class: "btn btn-primary" if policy(Material).create? %>
-<%= link_to 'Fournisseurs', suppliers_path %>

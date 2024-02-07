@@ -74,4 +74,4 @@ end
 gem 'devise'
 
 gem 'pundit'
-gem 'bootstrap', '~> 5.3.0'
+

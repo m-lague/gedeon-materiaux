@@ -12,15 +12,30 @@
   </head>
 
   <body>
-    <div class="container text-center display-flex">
-      <% if user_signed_in? %>
-        <%= link_to 'Déconnexion', destroy_user_session_path, method: :delete %>
-      <% else %>
-        <%= link_to 'Connexion', new_user_session_path %>
-      <% end %>
-      <%# <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
-      <%= yield %>
+
+
+      <%# <p class="notice"><%= notice %>
+    <div class="main-container">
+      <div id="sidebar">
+        <%= image_tag "logo.png", id: "logo" %>
+        <ul>
+          <li><%= link_to 'Materiaux', materials_path, class: "step btn btn-menu" %></li>
+          <li><%= link_to 'Fournisseurs', suppliers_path, class: "step btn btn-menu" %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class:"step btn btn-menu" %></li>
+          <% else %>
+            <li><%= link_to 'Connexion', new_user_session_path, class: "step btn btn-menu" %></li>
+          <% end %>
+          <div class="highlight">
+                <%# rectangle vert %>
+          </div>
+        </ul>
+      </div>
+      <div class="content-container">
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
     </div>
+
   </body>
 </html>
