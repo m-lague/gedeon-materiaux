@@ -23,6 +23,11 @@
     <%= form.text_field :location %>
   </div>
 
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
   <!-- Champ pour ajouter un matériau à un fournisseur -->
   <div class="field">
     <%= form.label :material_ids, 'Select Materials' %>
@@ -33,4 +38,3 @@
     <%= form.submit %>
   </div>
 <% end %>
-

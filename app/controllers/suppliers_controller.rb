@@ -1,7 +1,7 @@
 class SuppliersController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_supplier, only: [:show, :edit, :update, :destroy]
-  
+
 
   def index
     @suppliers = policy_scope(Supplier)
@@ -52,7 +52,7 @@ class SuppliersController < ApplicationController
   end
 
   def supplier_params
-    params.require(:supplier).permit(:name, :location, material_ids: [])
+    params.require(:supplier).permit(:name,:image, :location, material_ids: [])
   end
 
   def user_not_authorized

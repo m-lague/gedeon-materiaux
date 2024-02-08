@@ -3,14 +3,14 @@
 <div class="card-container">
   <% @materials.each do |material| %>
 <a href="<%=material_path(material)%>" class="card-link">
-  <div class="card-product">
+  <div class="card">
 
         <% if material.image.attached? %>
-          <%= image_tag url_for(material.image) %>
+          <%= image_tag material.image %>
         <% else %>
           <%= image_tag "placeholder.svg" %>
         <% end %>
-        <div class="card-product-infos">
+        <div class="card-infos">
           <h2><%= material.name %></h2>
           <p><%= material.category %> fournis par: <% material.suppliers.each do |supplier| %>
                                                         <%= supplier.name %> ,
@@ -18,7 +18,7 @@
           </p>
         </div>
         <% if current_user%>
-          <div class="card-product-actions">
+          <div class="card-actions">
             <!-- helpers -->
             <%= link_edit(material) %>
             <%= link_destroy(material) %>

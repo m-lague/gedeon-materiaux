@@ -2,7 +2,7 @@
 <div class="text-start">
 
   <% if @material.image.attached? %>
-    <%= image_tag url_for(@material.image) %>
+    <%= image_tag @material.image %>
   <% end %>
 
   <h2><%= @material.name %></h2>
