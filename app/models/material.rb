@@ -7,6 +7,7 @@ class Material < ApplicationRecord
   belongs_to :user
 
   has_rich_text :description
+  has_one_attached :image
 
 
   def average_rating

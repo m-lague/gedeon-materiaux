@@ -13,6 +13,10 @@
   a {
     text-decoration: none;
   }
+  .visible {
+    border-color: red;
+    border-style: solid;
+  }
 }
 .main-container {
   display: flex;
