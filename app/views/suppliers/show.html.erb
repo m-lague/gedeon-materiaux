@@ -1,24 +1,30 @@
 <!-- app/views/suppliers/show.html.erb -->
 
 <p id="notice"><%= notice %></p>
+<div class="text-start">
 
-<p>
-  <strong>Name:</strong>
-  <%= @supplier.name %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @supplier.location %>
-</p>
-
-<h2>Materiau fourni par <%= @supplier.name %>:</h2>
-
-<ul>
-  <% @supplier.materials.each do |material| %>
-    <li><%= link_to material.name, material %></li>
+  <% if @supplier.image.attached? %>
+    <%= image_tag @supplier.image %>
   <% end %>
-</ul>
+
+  <p>
+    <strong>Name:</strong>
+    <%= @supplier.name %>
+  </p>
+
+  <p>
+    <strong>Location:</strong>
+    <%= @supplier.location %>
+  </p>
+
+  <h2>Materiau fourni par <%= @supplier.name %>:</h2>
+
+  <ul>
+    <% @supplier.materials.each do |material| %>
+      <li><%= link_to material.name, material %></li>
+    <% end %>
+  </ul>
+</div>
 
 <%= link_to "Editer |", edit_supplier_path(@supplier) if policy(@supplier).update? %>
 <%= link_to 'Back', suppliers_path %>

@@ -2,24 +2,37 @@
 
 <h1>Fournisseurs</h1>
 
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+
+<div class="card-container">
   <% @suppliers.each do |supplier| %>
-    <div class="col">
-      <%= link_to supplier_path(supplier) do %>
-        <div class="card mb-3 shadow">
-          <div class="card-body">
-            <h5 class="card-title"><%= supplier.name %></h5>
-            <p class="card-text"><%= supplier.location %></p>
-            <div class="btn-group" role="group" aria-label="Actions">
-              <%= link_to "Modifier", edit_supplier_path(supplier), class: "btn btn-outline-warning btn-sm" if policy(supplier).update? %>
-              <%= link_to "Supprimer", supplier, method: :delete, data: { confirm: "Êtes-vous sûr?" }, class: "btn btn-outline-danger btn-sm" if policy(supplier).destroy?%>
-            </div>
-          </div>
+    <a href="<%=supplier_path(supplier)%>" class="card-link">
+      <div class="card">
+        <% if supplier.image.attached? %>
+          <%= image_tag supplier.image %>
+        <% else %>
+          <%= image_tag "placeholder.svg" %>
+        <% end %>
+        <div class="card-infos">
+          <h2><%= supplier.name %></h2>
+          <p><%= supplier.location %>
+          <br>fournit les matériaux: <br><% supplier.materials.each do |material| %>
+                                                                <%= material.name %> <br>
+                                                              <%end%>
+          </p>
         </div>
-      <% end %>
-    </div>
+        <% if current_user%>
+          <div class="card-actions">
+            <!-- helpers -->
+            <%= link_edit(supplier) %>
+            <%= link_destroy(supplier) %>
+          </div>
+        <% end %>
+      </div>
+    </a>
   <% end %>
 </div>
 
-<%= link_to "Ajouter un Fournisseur", new_supplier_path, class: "btn btn-primary" if policy(Supplier).create? %>
 
+
+<%= link_to "Ajouter un Fournisseur", new_supplier_path, class: "btn btn-primary" if policy(Supplier).create? %>
