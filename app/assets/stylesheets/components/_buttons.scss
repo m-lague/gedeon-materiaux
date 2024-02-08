@@ -27,3 +27,12 @@
   font-size: large;
 
 }
+.btn-danger {
+  border-style: solid;
+  border-color: red;
+  &:hover {
+    background-color: red;
+    color: white;
+  }
+  //
+}

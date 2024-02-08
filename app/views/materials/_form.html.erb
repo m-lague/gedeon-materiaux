@@ -38,6 +38,11 @@
     <%= form.number_field :cost %>
   </div>
 
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
+  </div>
+
   <!-- Utilisation de collection_select pour permettre à un matériau d'être vendu par plusieurs fournisseurs -->
   <div class="field">
     <%= form.label :supplier_ids, 'Select Suppliers' %>

@@ -1,7 +1,7 @@
 class MaterialsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   before_action :set_material, only: [:show, :edit, :update, :destroy]
-  
+
 
   def index
     @materials = policy_scope(Material)
@@ -56,7 +56,7 @@ class MaterialsController < ApplicationController
   end
 
   def material_params
-    params.require(:material).permit(:name, :description,:category, :efficiency,
+    params.require(:material).permit(:name,:image, :description,:category, :efficiency,
     :cost, supplier_ids: [])
   end
 

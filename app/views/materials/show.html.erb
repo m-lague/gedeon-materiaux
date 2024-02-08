@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 <div class="text-start">
 
+  <% if @material.image.attached? %>
+    <%= image_tag url_for(@material.image) %>
+  <% end %>
+
   <h2><%= @material.name %></h2>
 
   <p class="description">

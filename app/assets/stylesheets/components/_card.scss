@@ -5,19 +5,34 @@
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
+  //flex-direction: row;
   align-items: center;
+  justify-content: flex-start;
+  //align-content: flex-start;
   border-radius: 8px;
   text-decoration: none;
   width: -webkit-fill-available;
   margin-right: 40px;
   margin-top: 10px;
   margin-bottom: 10px;
+  &:hover {
+    background-color: darken(white, 10%);
+  }
+  .card-link {
+    display: contents;
+    color: $text;
+  }
 }
 
 .card-product img {
   height: 100%;
-  width: 160px;
+  width: 120px;
   object-fit: cover;
+}
+
+.card-product-infos {
+  //flex: 1;
+  margin-left: 20px;
 }
 
 .card-product h2 {
@@ -34,8 +49,15 @@
   margin-top: 8px;
 }
 
-.card-product .card-product-infos {
-  padding: 16px;
+.card-product-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-content: space-around;
+  flex-wrap: wrap;
+  background-color: transparent;
+  flex: 0 0 25%;
+  margin-left: auto;
 }
 
 .card {
@@ -119,7 +141,7 @@
   .cartes-container {
     flex-direction: column; // Affiche les cartes en colonne sur les petits écrans
   }
-  .carte {
+  .card {
     max-width: 100%; // Cartes à pleine largeur sur les petits écrans
   }
 }
