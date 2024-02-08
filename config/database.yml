@@ -82,5 +82,5 @@ test:
 production:
   <<: *default
   database: gedeon_materiaux_production
-  username: gedeon_materiaux
+  username: ahpj2025_mathieu
   password: <%= ENV["GEDEON_MATERIAUX_DATABASE_PASSWORD"] %>
