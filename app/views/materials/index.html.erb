@@ -6,7 +6,7 @@
   <div class="card">
 
         <% if material.image.attached? %>
-          <%= image_tag material.image %>
+          <%= cl_image_tag material.image.key %>
         <% else %>
           <%= image_tag "placeholder.svg" %>
         <% end %>
