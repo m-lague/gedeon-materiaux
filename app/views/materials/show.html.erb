@@ -2,7 +2,7 @@
 <div class="text-start">
 
   <% if @material.image.attached? %>
-    <%= image_tag @material.image %>
+    <%= cl_image_tag @material.image.key %>
   <% end %>
 
   <h2><%= @material.name %></h2>
