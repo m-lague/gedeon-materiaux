@@ -2,37 +2,30 @@
 
 <div class="card-container">
   <% @materials.each do |material| %>
-<a href="<%=material_path(material)%>" class="card-link">
-  <div class="card">
-
-        <% if material.image.attached? %>
-          <%= cl_image_tag material.image.key %>
-        <% else %>
-          <%= image_tag "placeholder.svg" %>
-        <% end %>
-        <div class="card-infos">
-          <h2><%= material.name %></h2>
-          <p><%= material.category %> fournis par: <% material.suppliers.each do |supplier| %>
-                                                        <%= supplier.name %> ,
-                                                        <%end%>
-          </p>
-          <p>Score : <%= material.average_rating%></p>
-        </div>
-        <% if current_user%>
-          <div class="card-actions">
-            <!-- helpers -->
-            <%= link_edit(material) %>
-            <%= link_destroy(material) %>
+    <a href="<%=material_path(material)%>" class="card-link">
+      <div class="card">
+          <% if material.image.attached? %>
+            <%= cl_image_tag material.image.key %>
+          <% else %>
+            <%= image_tag "placeholder.svg" %>
+          <% end %>
+          <div class="card-infos">
+            <h2><%= material.name %></h2>
+            <p><%= material.category %> fournis par: <% material.suppliers.each do |supplier| %>
+                                                          <%= supplier.name %> ,
+                                                          <%end%>
+            </p>
+            <p>Score : <%= material.average_rating%></p>
           </div>
-        <% end %>
-
-  </div>
-  </a>
-
-
-
-
-
+          <% if current_user%>
+            <div class="card-actions">
+              <!-- helpers -->
+              <%= link_edit(material) %>
+              <%= link_destroy(material) %>
+            </div>
+          <% end %>
+      </div>
+    </a>
   <% end %>
 </div>
 
