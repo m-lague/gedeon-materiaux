@@ -1,5 +1,11 @@
 require "active_support/core_ext/integer/time"
 
+# Load local environment variables from local_env.yml.
+env_file = Rails.root.join('config', 'local_env.yml')
+YAML.safe_load(File.open(env_file)).each do |key, value|
+  ENV[key.to_s] = value
+end if File.exist?(env_file)
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 

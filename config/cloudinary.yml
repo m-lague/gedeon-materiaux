@@ -1,20 +1,20 @@
 development:
-  cloud_name: "m-lague"
-  api_key: "495462367189913"
-  api_secret: "vVjOCWXLhWZaDt0CPe1PMfXycKc"
+  cloud_name: <%= ENV['CLOUDINARY_CLOUD_NAME'] %>
+  api_key: <%= ENV['CLOUDINARY_API_KEY'] %>
+  api_secret: <%= ENV['CLOUDINARY_API_SECRET'] %>
   enhance_image_tag: true
   static_file_support: false
 
 test:
-  cloud_name: "m-lague"
-  api_key: "495462367189913"
-  api_secret: "vVjOCWXLhWZaDt0CPe1PMfXycKc"
+  cloud_name: <%= ENV['CLOUDINARY_CLOUD_NAME'] %>
+  api_key: <%= ENV['CLOUDINARY_API_KEY'] %>
+  api_secret: <%= ENV['CLOUDINARY_API_SECRET'] %>
   enhance_image_tag: true
   static_file_support: false
 
 production:
-  cloud_name: "m-lague"
-  api_key: "495462367189913"
-  api_secret: "vVjOCWXLhWZaDt0CPe1PMfXycKc"
+  cloud_name: <%= ENV['CLOUDINARY_CLOUD_NAME'] %>
+  api_key: <%= ENV['CLOUDINARY_API_KEY'] %>
+  api_secret: <%= ENV['CLOUDINARY_API_SECRET'] %>
   enhance_image_tag: true
   static_file_support: true
