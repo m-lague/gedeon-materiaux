@@ -39,10 +39,12 @@
       <div class="content-container">
         <p class="alert"><%= alert %></p>
         <%= yield %>
-        <div class="ask-feedback">POUR TOUTE REMONTÉE D'INFORMATION (BUGS, SUGGESTIONS D'AMÉLIORATION, ...)
+        <% if current_user.present? %>
+          <div class="ask-feedback">POUR TOUTE REMONTÉE D'INFORMATION (BUGS, SUGGESTIONS D'AMÉLIORATION, ...)
             ENVOYEZ MOI UN EMAIL À
-          <a href="mailto:mathieu@gedeon.guide">mathieu@gedeon.guide</a>
-        </div>
+            <a href="mailto:mathieu@gedeon.guide">mathieu@gedeon.guide</a>
+          </div>
+        <% end %>
       </div>
     </div>
     </div>
