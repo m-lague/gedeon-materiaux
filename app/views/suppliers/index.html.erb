@@ -1,26 +1,22 @@
-<!-- app/views/suppliers/index.html.erb -->
-
 <h1>Fournisseurs</h1>
-
-
 
 <div class="card-container">
   <% @suppliers.each do |supplier| %>
     <a href="<%=supplier_path(supplier)%>" class="card-link">
       <div class="card">
-        <% if supplier.image.attached? %>
-          <%= image_tag supplier.image %>
-        <% else %>
-          <%= image_tag "placeholder.svg" %>
-        <% end %>
-        <div class="card-infos">
-          <h2><%= supplier.name %></h2>
-          <p><%= supplier.location %>
-          <br>fournit les matériaux: <br><% supplier.materials.each do |material| %>
+          <% if supplier.image.attached? %>
+            <%= image_tag supplier.image %>
+          <% else %>
+            <%= image_tag "placeholder.svg" %>
+          <% end %>
+          <div class="card-infos">
+            <h2><%= supplier.name %></h2>
+            <p><%= supplier.location %>
+              <br>fournit les matériaux: <br><% supplier.materials.each do |material| %>
                                                                 <%= material.name %> <br>
                                                               <%end%>
-          </p>
-        </div>
+            </p>
+          </div>
         <% if current_user%>
           <div class="card-actions">
             <!-- helpers -->
