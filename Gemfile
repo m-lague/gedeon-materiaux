@@ -78,5 +78,3 @@ gem 'devise'
 gem 'pundit'
 
 gem "cloudinary"
-
-gem 'dotenv-rails', groups: [:development, :test]
