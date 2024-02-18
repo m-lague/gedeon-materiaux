@@ -3,6 +3,35 @@
   <head>
     <title>GedeonMateriaux</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag 'rails-ujs', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+    <script>
+      window.addEventListener("load", function(){
+      window.cookieconsent.initialise({
+      "palette": {
+        "popup": {
+          "background": "#efefef",
+          "text": "#404040"
+        },
+        "button": {
+          "background": "#8ec760",
+          "text": "#ffffff"
+        }
+      },
+      "content": {
+        "message": "This website uses cookies to ensure you get the best experience on our website.",
+        "dismiss": "Got it!",
+        "link": "Learn more",
+        "href": "http://cookies.insites.com/about-cookies"
+      }
+      })});
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5FHQB22XMV"></script>
     <script>
@@ -12,12 +41,6 @@
 
       gtag('config', 'G-5FHQB22XMV');
     </script>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_include_tag 'rails-ujs', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_importmap_tags %>
   </head>
 
   <body>

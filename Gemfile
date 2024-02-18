@@ -80,3 +80,5 @@ gem 'pundit'
 gem "cloudinary"
 
 gem 'dotenv-rails', groups: [:development, :test]
+
+gem 'cookieconsent'

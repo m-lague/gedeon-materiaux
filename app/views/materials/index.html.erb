@@ -17,13 +17,16 @@
             </p>
             <p>Score : <%= material.average_rating%></p>
           </div>
-          <% if current_user%>
-            <div class="card-actions">
-              <!-- helpers -->
+
+          <div class="card-actions">
+            <% if policy(material).update? %>
+            <!-- helpers -->
               <%= link_edit(material) %>
+            <% end %>
+            <% if policy(material).destroy? %>
               <%= link_destroy(material) %>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
       </div>
     </a>
   <% end %>
