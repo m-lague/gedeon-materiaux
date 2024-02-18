@@ -88,6 +88,7 @@ GEM
       aws_cf_signer
       rest-client (>= 2.0.0)
     concurrent-ruby (1.2.3)
+    cookieconsent (0.1.0)
     crass (1.0.6)
     date (3.3.4)
     debug (1.9.1)
@@ -286,6 +287,7 @@ DEPENDENCIES
   bootsnap
   capybara
   cloudinary
+  cookieconsent
   debug
   devise
   dotenv-rails
