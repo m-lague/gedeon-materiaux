@@ -14,7 +14,7 @@ class MaterialPolicy < ApplicationPolicy
   end
 
   def update?
-    user && user.admin? # Seuls les administrateurs peuvent mettre à jour un matériel
+    user && (user.admin? || record.user == user) # Seuls les administrateurs peuvent mettre à jour un matériel
   end
 
   def destroy?
