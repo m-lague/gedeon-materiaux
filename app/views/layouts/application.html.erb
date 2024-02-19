@@ -11,6 +11,7 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag 'rails-ujs', 'data-turbolinks-track': 'reload' %>
     <%= javascript_importmap_tags %>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
     <script>
       window.addEventListener("load", function(){
       window.cookieconsent.initialise({
@@ -46,39 +47,19 @@
   <body>
 
       <%# <p class="notice"><%= notice %>
-    <div class="main-container">
-      <div class ="sidebar" id="sidebar">
-        <%=link_to "https://gedeon.guide" do %>
-          <%= image_tag("logo.png", id: "logo") %>
-        <%end%>
-        <ul>
-          <li><%= link_to 'Materiaux', materials_path, class: "step btn btn-menu" %></li>
-          <li><%= link_to 'Fournisseurs', suppliers_path, class: "step btn btn-menu" %></li>
-          <% if user_signed_in? %>
-            <li><%= link_to 'Déconnexion', destroy_user_session_path, method: :delete, class:"step btn btn-menu" %></li>
-          <% else %>
-            <li><%= link_to 'Connexion', new_user_session_path, class: "step btn btn-menu" %></li>
-          <% end %>
-          <div class="highlight">
-                <%# rectangle vert %>
-          </div>
-        </ul>
-      </div>
-      <div class="burger-menu" id="burger-menu">
-        <!-- Menu burger -->
-        <button onclick="toggleSidebar()">☰ Menu</button>
-      </div>
-      <div class="content-container">
+
+
+      <div class="container w-full mx-auto mt-28 px-6 lg:px-24 xl:px-48 flex-col">
         <p class="alert"><%= alert %></p>
         <%= yield %>
         <% if current_user.present? %>
-          <div class="ask-feedback">POUR TOUTE REMONTÉE D'INFORMATION (BUGS, SUGGESTIONS D'AMÉLIORATION, ...)
+          <div class="text-center my-6 text-base">POUR TOUTE REMONTÉE D'INFORMATION (BUGS, SUGGESTIONS D'AMÉLIORATION, ...)
             ENVOYEZ MOI UN EMAIL À
-            <a href="mailto:mathieu@gedeon.guide">mathieu@gedeon.guide</a>
+            <a href="mailto:mathieu@gedeon.guide" class="text-blue-500 ">mathieu@gedeon.guide</a>
           </div>
         <% end %>
       </div>
-    </div>
+
     </div>
   </body>
 </html>

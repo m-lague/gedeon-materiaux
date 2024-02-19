@@ -1,37 +1,42 @@
-<h1>Materiaux</h1>
 
-<div class="card-container">
-  <% @materials.each do |material| %>
-    <a href="<%=material_path(material)%>" class="card-link">
-      <div class="card">
-          <% if material.image.attached? %>
-            <%= cl_image_tag material.image.key %>
-          <% else %>
-            <%= image_tag "placeholder.svg" %>
-          <% end %>
-          <div class="card-infos">
-            <h2><%= material.name %></h2>
-            <p><%= material.category %> fournis par: <% material.suppliers.each do |supplier| %>
-                                                          <%= supplier.name %> ,
-                                                          <%end%>
-            </p>
-            <p>Votes : <%= material.average_rating%></p>
-          </div>
+  <div class="flex flex-col ">
+    <h1 class="font-bold text-4xl text-center">Matériaux</h1>
 
-          <div class="card-actions">
-            <% if policy(material).update? %>
-            <!-- helpers -->
-              <%= link_edit(material) %>
-            <% end %>
-            <% if policy(material).destroy? %>
-              <%= link_destroy(material) %>
+    <p class="fa fa-bars text-center">Tous les matériaux écologiques réunis au même endroit</p>
+
+    <%= button_to "Ajouter un Matériau", new_material_path, method: :get,
+      class:"bg-green-600 rounded-md grow-0 mt-2 mb-3 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" if policy(Material).create? %>
+
+  </div>
+  <!--  Card Container -->
+  <div class="container grid grid-cols-1 md:grid-cols-2 gap-4 justify-center w-full ">
+    <% @materials.each do |material| %>
+      <!-- Carte  -->
+      <a href="<%=material_path(material)%>" class="card-link">
+        <div class="flex flex-col sm:flex-row justify-between sm:justify-start  bg-white p-2 w-full shadow-md rounded-md overflow-hidden sm:h-36 ">
+          <!-- Image -->
+          <div class="aspect-square flex-none w-25 ">
+            <% if material.image.attached? %>
+              <%= cl_image_tag material.image.key, alt: "Photo", class: "w-full h-full"%>
+            <% else %>
+              <%= image_tag "placeholder.svg", alt: "Photo", class: "w-full h-full" %>
             <% end %>
           </div>
-      </div>
-    </a>
-  <% end %>
+
+          <!-- Contenu -->
+          <div class="grow flex flex-row justify-between ">
+            <!-- Nom et description du matériau -->
+            <div class="flex flex-col grow-1 shrink-1 p-4 md:w-2/3">
+              <h2 class="text-lg font-semibold"><%= material.name %></h2>
+              <p class="text-sm text-gray-600"><%= material.category %></p>
+            </div>
+            <!-- Upvotes -->
+            <div class="w-20 flex items-center justify-center p-4 bg-gray-100">
+              <span class="text-lg font-semibold text-gray-800"><%= material.average_rating%></span>
+            </div>
+          </div>
+        </div>
+      </a>
+    <% end %>
+  </div>
 </div>
-
-
-
-<%= link_to "Ajouter un Matériau", new_material_path, class: "btn btn-primary" if policy(Material).create? %>
