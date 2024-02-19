@@ -30,6 +30,13 @@
               <h2 class="text-lg font-semibold"><%= material.name %></h2>
               <p class="text-sm text-gray-600"><%= material.category %></p>
             </div>
+            <% if current_user%>
+              <div class="flex flex-col justify-center">
+                <!-- helpers -->
+                <%= link_edit(material) %>
+                <%= link_destroy(material) %>
+              </div>
+            <% end %>
             <!-- Upvotes -->
             <div class="w-20 flex items-center justify-center p-4 bg-gray-100">
               <span class="text-lg font-semibold text-gray-800"><%= material.average_rating%></span>
