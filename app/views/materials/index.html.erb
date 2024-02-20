@@ -1,53 +1,52 @@
 
-  <div class="flex flex-col ">
-    <h1 class="font-bold text-4xl text-center">Matériaux</h1>
+<div class="flex flex-col ">
+  <h1 class="font-bold text-4xl text-center">Matériaux</h1>
 
-    <p class="fa fa-bars text-center">Tous les matériaux écologiques réunis au même endroit</p>
+  <p class="fa fa-bars text-center">Tous les matériaux écologiques réunis au même endroit</p>
 
-    <%= button_to "Ajouter un Matériau", new_material_path, method: :get,
-      class:"bg-green-600 rounded-md grow-0 mt-2 mb-3 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" if policy(Material).create? %>
+  <%= button_to "Ajouter un Matériau", new_material_path, method: :get,
+    class:"bg-green-600 rounded-md grow-0 mt-2 mb-3 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" if policy(Material).create? %>
 
-  </div>
+</div>
 
-  <!--  Card Container -->
-  <div class="container grid grid-cols-1 md:grid-cols-2 gap-4 justify-center w-full ">
+<!--  Card Container -->
+<div class="container grid grid-cols-1 md:grid-cols-2 gap-4 justify-center w-full ">
 
-    <% @materials.each do |material| %>
-      <!-- Carte  -->
+  <% @materials.each do |material| %>
+    <!-- Carte  -->
+    <div class="relative flex flex-col sm:flex-row justify-between sm:justify-start  bg-white p-2 w-full shadow-md rounded-md overflow-hidden sm:h-36 ">
+      <%= link_to material_path(material), class: "flex w-full" do %>
+        <!-- Image -->
+        <div class="aspect-square flex w-32 ">
+          <% if material.image.attached? %>
+            <%= cl_image_tag material.image.key, alt: "Photo", class: "w-full h-full"%>
+          <% else %>
+            <%= image_tag "placeholder.svg", alt: "Photo", class: "w-full h-full" %>
+          <% end %>
+        </div>
 
-
-      <div class="flex flex-col sm:flex-row justify-between sm:justify-start  bg-white p-2 w-full shadow-md rounded-md overflow-hidden sm:h-36 ">
-        <%= link_to material_path(material), class: "flex w-full" do %>
-          <!-- Image -->
-          <div class="aspect-square flex w-32 ">
-            <% if material.image.attached? %>
-              <%= cl_image_tag material.image.key, alt: "Photo", class: "w-full h-full"%>
-            <% else %>
-              <%= image_tag "placeholder.svg", alt: "Photo", class: "w-full h-full" %>
-            <% end %>
+        <!-- Contenu -->
+        <div class="grow flex flex-row justify-between ">
+          <!-- Nom et description du matériau -->
+          <div class="flex flex-col grow-1 shrink-1 p-4 md:w-2/3">
+            <h2 class="text-lg font-semibold"><%= material.name %></h2>
+            <p class="text-sm text-gray-600"><%= material.category %></p>
           </div>
 
-          <!-- Contenu -->
-          <div class="grow flex flex-row justify-between ">
-            <!-- Nom et description du matériau -->
-            <div class="flex flex-col grow-1 shrink-1 p-4 md:w-2/3">
-              <h2 class="text-lg font-semibold"><%= material.name %></h2>
-              <p class="text-sm text-gray-600"><%= material.category %></p>
-            </div>
-            <% if current_user%>
-              <div class="flex flex-col justify-center">
-                <!-- helpers -->
-                <%= link_edit(material) %>
-                <%= link_destroy(material) %>
-              </div>
-            <% end %>
-            <!-- Upvotes -->
-            <div class="w-20 flex items-center justify-center p-4 bg-gray-100">
-              <span class="text-lg font-semibold text-gray-800"><%= material.average_rating%></span>
-            </div>
+          <!-- Upvotes -->
+          <div class="w-20 flex items-center justify-center p-4 bg-gray-100">
+            <span class="text-lg font-semibold text-gray-800"><%= material.average_rating%></span>
           </div>
-        <%end%>
-      </div>
-    <% end %>
-  </div>
+        </div>
+      <%end%>
+      <!-- Liens edit et destroy-->
+      <% if current_user%>
+        <div class="absolute top-2 right-2 flex space-x-2">
+          <!-- helpers -->
+          <%= link_edit(material) %>
+          <%= link_destroy(material) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>
