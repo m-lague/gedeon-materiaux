@@ -14,7 +14,7 @@
 
   <% @materials.each do |material| %>
     <!-- Carte  -->
-    <div class="relative flex flex-col sm:flex-row justify-between sm:justify-start  bg-white p-2 w-full shadow-md rounded-md overflow-hidden sm:h-36 ">
+    <div class="relative flex flex-col sm:flex-row justify-between sm:justify-start  bg-white hover:bg-gray-50 p-2 w-full shadow-md rounded-md overflow-hidden sm:h-36 ">
       <%= link_to material_path(material), class: "flex w-full" do %>
         <!-- Image -->
         <div class="aspect-square flex w-32 ">
