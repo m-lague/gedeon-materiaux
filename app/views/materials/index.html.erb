@@ -8,11 +8,14 @@
       class:"bg-green-600 rounded-md grow-0 mt-2 mb-3 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" if policy(Material).create? %>
 
   </div>
+
   <!--  Card Container -->
   <div class="container grid grid-cols-1 md:grid-cols-2 gap-4 justify-center w-full ">
+
     <% @materials.each do |material| %>
       <!-- Carte  -->
-      <a href="<%=material_path(material)%>" class="card-link">
+
+      <%= link_to material_path(material) do %>
         <div class="flex flex-col sm:flex-row justify-between sm:justify-start  bg-white p-2 w-full shadow-md rounded-md overflow-hidden sm:h-36 ">
           <!-- Image -->
           <div class="aspect-square flex-none w-25 ">
@@ -43,7 +46,8 @@
             </div>
           </div>
         </div>
-      </a>
+      <%end%>
+
     <% end %>
   </div>
 </div>

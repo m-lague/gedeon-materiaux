@@ -47,10 +47,10 @@
   <body>
     <%= render "shared/navbar" %>
       <%# <p class="notice"><%= notice %>
-
+      <p class="alert"><%= alert %></p>
 
       <div class="container w-full mx-auto mt-28 px-6 lg:px-24 xl:px-48 flex-col">
-        <p class="alert"><%= alert %></p>
+
         <%= yield %>
         <% if current_user.present? %>
           <div class="text-center my-6 text-base">POUR TOUTE REMONTÉE D'INFORMATION (BUGS, SUGGESTIONS D'AMÉLIORATION, ...)
