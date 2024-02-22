@@ -1,4 +1,4 @@
-<h2>Connexion</h2>
+<h2 class="text-3xl font-bold">Connexion</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -19,7 +19,7 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Se Connecter", class: "bg-green-600 rounded-md grow-0 mt-2 mb-3 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" %>
   </div>
 <% end %>
 
