@@ -17,7 +17,7 @@
     <div class="relative flex bg-white hover:bg-gray-50 p-2 w-full shadow-md rounded-md overflow-hidden sm:h-36 ">
       <%= link_to material_path(material), class: "flex w-full" do %>
         <!-- Image -->
-        <div class="aspect-square flex w-28 sm:w-32 shrink-0 flex-col sm:flex-row justify-between sm:justify-start ">
+        <div class="aspect-square flex w-16 sm:w-32 shrink-0 flex-col sm:flex-row justify-between sm:justify-start ">
           <% if material.image.attached? %>
             <%= cl_image_tag material.image.key, width: 128, height: 128, crop: :fill,  alt: "Photo"%>
           <% else %>
@@ -34,8 +34,9 @@
           </div>
 
           <!-- Upvotes -->
-          <div class="absolute right-0 top-12 w-20 flex items-center justify-center p-4 bg-gray-100">
+          <div class="absolute right-0 bottom-0 w-20 flex items-center justify-center p-4 bg-gray-100">
             <span class="text-lg font-semibold text-gray-800"><%= material.average_rating%></span>
+
           </div>
         </div>
       <%end%>
