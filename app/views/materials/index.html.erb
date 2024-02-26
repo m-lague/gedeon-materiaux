@@ -17,9 +17,9 @@
     <div class="relative flex bg-white hover:bg-gray-50 p-2 w-full shadow-md rounded-md overflow-hidden sm:h-36 ">
       <%= link_to material_path(material), class: "flex w-full" do %>
         <!-- Image -->
-        <div class="aspect-square flex w-16 sm:w-32 shrink-0 flex-col sm:flex-row justify-between sm:justify-start rounded ">
+        <div class="aspect-square flex w-16 sm:w-32 shrink-0 flex-col sm:flex-row justify-between sm:justify-start ">
           <% if material.image.attached? %>
-            <%= cl_image_tag material.image.key, width: 128, height: 128, crop: :fill,  alt: "Photo"%>
+            <%= cl_image_tag material.image.key, width: 128, height: 128, crop: :fill,  alt: "Photo", class:"rounded-md"%>
           <% else %>
             <%= image_tag "placeholder.svg", alt: "Photo", class: "w-full h-full" %>
           <% end %>
