@@ -68,7 +68,6 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver"
 
 
 end
@@ -82,3 +81,7 @@ gem "cloudinary"
 gem 'dotenv-rails', groups: [:development, :test]
 
 gem 'cookieconsent'
+
+# scrapping ---------------
+gem 'nokogiri'
+gem 'down'
