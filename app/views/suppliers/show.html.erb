@@ -24,7 +24,7 @@
     <% end %>
   </ul>
 
-  <h3><%= link_to "Voir le Fournisseur", @supplier.affiliate_link, class: "font-bold text-blue-500", target: "_blank" %></h3>
+  <h3><%= link_to "Voir le Fournisseur", @supplier.affiliate_link, class: "font-bold text-blue-500", target: "_blank" unless @supplier.affiliate_link.nil?%></h3>
 </div>
 
 <%= link_to "Editer |", edit_supplier_path(@supplier) if policy(@supplier).update? %>
