@@ -1,31 +1,32 @@
 <!-- app/views/suppliers/show.html.erb -->
 
 <p id="notice"><%= notice %></p>
-<div class="text-start">
 
-  <% if @supplier.image.attached? %>
-    <%= image_tag @supplier.image %>
-  <% end %>
-
-  <p class="font-bold">
-    <%= @supplier.name %>
-  </p>
-
-  <p>
-    <strong>Localisation:</strong>
-    <%= @supplier.location %>
-  </p>
-
-  <h2>Materiau fourni par <%= @supplier.name %>:</h2>
-
-  <ul>
-    <% @supplier.materials.each do |material| %>
-      <li><%= link_to material.name, material %></li>
+<section class="flex flex-row justify-around">
+  <div class="">
+    <% if @supplier.image.attached? %>
+      <%= image_tag @supplier.image, class: "w-32 sm:w-48" %>
     <% end %>
-  </ul>
+  </div>
+  <div class=" self-center sm:ml-32">
+    <p class="text-semibold text-3xl">
+      <%= @supplier.name %>
+    </p>
+    <p>
+      Localisation:
+      <%= @supplier.location %>
+    </p>
+    <h3>
+      <%= link_to "Voir le Fournisseur", @supplier.affiliate_link, class: "font-bold text-blue-500 text-lg", target: "_blank" unless @supplier.affiliate_link.nil?%>
+    </h3>
+  </div>
 
-  <h3><%= link_to "Voir le Fournisseur", @supplier.affiliate_link, class: "font-bold text-blue-500", target: "_blank" unless @supplier.affiliate_link.nil?%></h3>
-</div>
+</section>
+
+
+<h2 class="text-xl">Materiaux fourni par <%= @supplier.name %> :</h2>
+
+<%= render "shared/card", items: @supplier.materials%>
 
 <%= link_to "Editer |", edit_supplier_path(@supplier) if policy(@supplier).update? %>
 <%= link_to 'Back', :back %>
