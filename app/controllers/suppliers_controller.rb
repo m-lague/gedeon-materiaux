@@ -52,7 +52,7 @@ class SuppliersController < ApplicationController
   end
 
   def supplier_params
-    params.require(:supplier).permit(:name,:image, :location, :affiliate_link)
+    params.require(:supplier).permit(:name,:image, :location, :affiliate_link, material_ids: [])
   end
 
   def user_not_authorized
