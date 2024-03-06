@@ -23,19 +23,22 @@
             <p class="text-gray-600 break-words text-xs sm:text-sm">
 
               <%=  case params[:controller]
-                    when "Suppliers" then item.location
-                    when "Materials" then item.category
+                    when "suppliers" then item.location
+                    when "materials" then item.category
                     end %>
             </p>
           </div>
 
+
           <!-- Upvotes -->
-          <% if params[:controller] == "Materials" %>
-            <div class="absolute right-0 bottom-0 w-20 flex
-              items-center justify-center p-4">
-              <span class="text-lg font-semibold text-gray-800">
+          <% if params[:controller] == "materials" %>
+            <div class="border-red-500 absolute right-0 bottom-0 w-20 flex
+              flex-col items-center justify-center p-4">
+              <i class=" fa-solid fa-caret-up text-gray-800"></i>
+              <span class="text-lg font-semibold text-gray-800 leading-none">
                 <%= item.average_rating%>
               </span>
+
             </div>
           <%end%>
         </div>

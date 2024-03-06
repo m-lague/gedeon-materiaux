@@ -16,3 +16,4 @@ pin "lit-html" # @3.1.1
 pin "lit-html/is-server.js", to: "lit-html--is-server.js.js" # @3.1.1
 
 pin "cookieconsent", to: "https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"
+

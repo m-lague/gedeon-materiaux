@@ -108,6 +108,8 @@ GEM
       addressable (~> 2.8)
     erubi (1.12.0)
     ffi (1.16.3)
+    font-awesome-sass (6.5.1)
+      sassc (~> 2.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     http-accept (1.7.0)
@@ -285,6 +287,7 @@ DEPENDENCIES
   devise
   dotenv-rails
   down
+  font-awesome-sass (~> 6.5.1)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
