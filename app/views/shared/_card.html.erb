@@ -22,9 +22,9 @@
             </h2>
             <p class="text-gray-600 break-words text-xs sm:text-sm">
 
-              <%=  case params[:controller]
-                    when "suppliers" then item.location
-                    when "materials" then item.category
+              <%=  case item.class.to_s
+                    when "Supplier" then item.location
+                    when "Material" then item.category
                     end %>
             </p>
           </div>
@@ -54,3 +54,4 @@
     </div>
   <% end %>
 </div>
+<%= console %>
