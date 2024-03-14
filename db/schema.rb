@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_05_160502) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_13_154820) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -70,6 +70,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_05_160502) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
+    t.integer "upvotes_count", default: 0, null: false
     t.index ["user_id"], name: "index_materials_on_user_id"
   end
 
@@ -93,6 +94,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_05_160502) do
     t.string "affiliate_link"
   end
 
+  create_table "upvotes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "item_type", null: false
+    t.bigint "item_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_type", "item_id"], name: "index_upvotes_on_item"
+    t.index ["user_id", "item_type", "item_id"], name: "index_upvotes_on_user_id_and_item_type_and_item_id", unique: true
+    t.index ["user_id"], name: "index_upvotes_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -114,4 +126,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_05_160502) do
   add_foreign_key "materials", "users"
   add_foreign_key "ratings", "materials"
   add_foreign_key "ratings", "users"
+  add_foreign_key "upvotes", "users"
 end

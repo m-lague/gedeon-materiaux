@@ -36,9 +36,8 @@
               flex-col items-center justify-center p-4">
               <i class=" fa-solid fa-caret-up text-gray-800"></i>
               <span class="text-lg font-semibold text-gray-800 leading-none">
-                <%= item.average_rating%>
+                <%= item.upvotes_count%>
               </span>
-
             </div>
           <%end%>
         </div>
@@ -51,6 +50,9 @@
           <%= link_destroy(item) %>
         </div>
       <% end %>
+      <div class="absolute bottom-0 right-0">
+        <%= button_to "Voter", upvotes_path(item_id: item.id, item_type: item.class.to_s) %>
+      </div>
     </div>
   <% end %>
 </div>

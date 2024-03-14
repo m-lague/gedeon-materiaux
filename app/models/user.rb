@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :ratings, dependent: :destroy
   has_many :materials
+  has_many :upvotes
 
   enum :role, { admin: 0, free_user: 1, paying_user: 2 }
 end

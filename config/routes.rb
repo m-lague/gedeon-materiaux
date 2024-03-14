@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   end
   resources :suppliers
   root 'materials#index'
+  resources :upvotes, only: [:create, :destroy]
+
 end
