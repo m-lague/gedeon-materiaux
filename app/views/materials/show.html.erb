@@ -12,6 +12,7 @@
     <%= @material.description %>
   </p>
 
+
   <p>
     <strong>Category:</strong>
     <%= @material.category %>
@@ -36,35 +37,6 @@
     <li><%= link_to supplier.name, supplier %></li>
   <% end %>
 </ul>
-
-<%# --------------------- FORMULAIRE DE VOTE-------------------------- %>
-<%= form_with(model: [@material, @rating], url: material_ratings_path(@material)) do |form| %>
-  <% if @rating.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@rating.errors.count, "error") %> prohibited this rating from being saved:</h2>
-
-      <ul>
-        <% @rating.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :score, "Vote"%>
-    <%= form.number_field :score, min: 1, max: 5 %>
-  </div>
-
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit 'Vote', class: "btn btn-form" %>
-  </div>
-<% end %>
 
 <%= link_to "Editer", edit_material_path(@material) if policy(@material).update? %>
 <%= link_to 'Back', :back %>
