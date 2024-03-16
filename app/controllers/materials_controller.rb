@@ -8,9 +8,6 @@ class MaterialsController < ApplicationController
   end
 
   def show
-
-    @material = Material.find(params[:id])
-    @rating = Rating.new(material: @material)
     authorize @material
   end
 
