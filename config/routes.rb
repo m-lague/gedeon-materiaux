@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   resources :suppliers
   root 'materials#index'
   resources :upvotes, only: [:create, :destroy]
-
+  post '/toggle_vote', to: 'upvotes#toggle_vote'
 end

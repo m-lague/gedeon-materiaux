@@ -1,14 +1,23 @@
 class UpvotesController < ApplicationController
-  before_action :find_item
+  before_action :set_item, :set_upvote
 
-  def create
+  def toggle_vote
+    authorize Upvote
     if already_upvoted?
-      flash[:notice] = "Vous avez déjà voté."
+      @upvote.destroy
+      respond_to do |format|
+        format.html { redirect_to materials_path }
+        format.turbo_stream
+      end
     else
       @upvote = Upvote.new(item: @item, user: current_user)
       authorize @upvote
       if @upvote.save
         flash[:notice] = "c'est fait!"
+        respond_to do |format|
+          format.html { redirect_to materials_path }
+          format.turbo_stream
+        end
       else
         flash[:notice] = "qquelque chose s'est mal passé"
       end
@@ -17,11 +26,17 @@ class UpvotesController < ApplicationController
 
   private
 
-  def find_item
+  def set_item
     @item = params[:item_type].constantize.find(params[:item_id])
   end
 
-  def already_upvoted?
-    Upvote.where(user_id: current_user.id, item: @item).exists?
+  def set_upvote
+    @upvote = Upvote.where(user_id: current_user.id, item: @item).first
   end
+
+  def already_upvoted?
+    @upvote
+  end
+
+
 end

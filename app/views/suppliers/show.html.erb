@@ -26,7 +26,7 @@
 
 <h2 class="text-xl">Materiaux fourni par <%= @supplier.name %> :</h2>
 
-<%= render "shared/card", items: @supplier.materials%>
+<%= render @supplier.materials%>
 
 <%= link_to "Editer |", edit_supplier_path(@supplier) if policy(@supplier).update? %>
 <%= link_to 'Back', :back %>

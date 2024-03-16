@@ -6,11 +6,7 @@ class UpvotePolicy < ApplicationPolicy
     end
   end
 
-  def create?
-    true
-  end
-
-  def destroy?
-    true
+  def toggle_vote?
+    user.present?
   end
 end

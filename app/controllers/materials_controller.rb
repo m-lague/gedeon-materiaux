@@ -26,7 +26,7 @@ class MaterialsController < ApplicationController
     if @material.save
       redirect_to @material, notice: 'Material was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -37,16 +37,20 @@ class MaterialsController < ApplicationController
   def update
     authorize @material
     if @material.update(material_params)
-      redirect_to @material, notice: 'Material was successfully updated.'
+      redirect_to materials_path , notice: 'Material was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     authorize @material
     @material.destroy
-    redirect_to materials_url, notice: 'Material was successfully destroyed.'
+    respond_to do |format|
+      format.html { redirect_to quotes_path, notice: "Quote was successfully destroyed."}
+      format.turbo_stream
+    end
+
   end
 
   private
