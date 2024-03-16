@@ -1,48 +1,48 @@
 <!-- Carte  -->
 
-  <div class="relative flex bg-white hover:bg-gray-50 p-2 w-full shadow-md rounded-md overflow-hidden sm:h-36 ">
+<div class="relative flex bg-white hover:bg-gray-50 p-2 w-full shadow-md rounded-md overflow-hidden sm:h-36 ">
 
-      <%= link_to item, class: "flex w-full", data: {turbo_frame: "_top"} do %>
-        <!-- Image -->
-        <div class="aspect-square flex w-16 sm:w-32 shrink-0 flex-col sm:flex-row justify-between sm:justify-start ">
-          <% if item.image.attached? %>
-            <%= cl_image_tag item.image.key, width: 128, height: 128, crop: :fill,  alt: "Photo", class:"rounded-md"%>
-          <% else %>
-            <%= image_tag "placeholder.svg", alt: "Photo", class: "w-full h-full" %>
-          <% end %>
-        </div>
-
-        <!-- Contenu -->
-        <div class="grow flex flex-row justify-between break-words">
-          <!-- Nom et description de l'item -->
-          <div class="flex flex-col shrink-1 p-4 md:w-2/3 ">
-            <h2 class=" font-semibold text-sm sm:text-base">
-              <%= item.name %>
-            </h2>
-            <p class="text-gray-600 break-words text-xs sm:text-sm">
-
-              <%=  case item.class.to_s
-                    when "Supplier" then item.location
-                    when "Material" then item.category
-                    end %>
-            </p>
-          </div>
-        </div>
-      <%end%>
-
-      <!-- Liens edit et destroy-->
-      <% if current_user%>
-        <div class="absolute top-2 right-2 flex space-x-2">
-          <!-- helpers -->
-          <%= link_edit(item) %>
-          <%= link_destroy(item) %>
-        </div>
+  <%= link_to item, class: "flex w-full", data: {turbo_frame: "_top"} do %>
+    <!-- Image -->
+    <div class="aspect-square flex w-16 sm:w-32 shrink-0 flex-col sm:flex-row justify-between sm:justify-start ">
+      <% if item.image.attached? %>
+        <%= cl_image_tag item.image.key, width: 128, height: 128, crop: :fill,  alt: "Photo", class:"rounded-md"%>
+      <% else %>
+        <%= image_tag "placeholder.svg", alt: "Photo", class: "w-full h-full" %>
       <% end %>
+    </div>
 
-      <!-- Upvotes -->
-      <%= turbo_frame_tag dom_id(item, "upvote") do%>
-        <% if params[:controller] == "materials" %>
-          <%=render 'upvotes/upvote', item: item %>
-        <%end%>
-      <%end%>
-  </div>
+    <!-- Contenu -->
+    <div class="grow flex flex-row justify-between break-words">
+      <!-- Nom et description de l'item -->
+      <div class="flex flex-col shrink-1 p-4 md:w-2/3 ">
+        <h2 class=" font-semibold text-sm sm:text-base">
+          <%= item.name %>
+        </h2>
+        <p class="text-gray-600 break-words text-xs sm:text-sm">
+
+          <%=  case item.class.to_s
+                when "Supplier" then item.location
+                when "Material" then item.category
+                end %>
+        </p>
+      </div>
+    </div>
+  <%end%>
+
+  <!-- Liens edit et destroy-->
+  <% if current_user%>
+    <div class="absolute top-2 right-2 flex space-x-2">
+      <!-- helpers -->
+      <%= link_edit(item) %>
+      <%= link_destroy(item) %>
+    </div>
+  <% end %>
+
+  <!-- Upvotes -->
+  <%= turbo_frame_tag dom_id(item, "upvote") do%>
+    <% if item.class == Material %>
+      <%=render 'upvotes/upvote', item: item %>
+    <%end%>
+  <%end%>
+</div>

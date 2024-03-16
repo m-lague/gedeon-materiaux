@@ -37,7 +37,7 @@ class MaterialsController < ApplicationController
   def update
     authorize @material
     if @material.update(material_params)
-      redirect_to materials_path , notice: 'Material was successfully updated.'
+      redirect_to material_path , notice: 'Material was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end

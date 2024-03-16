@@ -2,12 +2,14 @@
 <div class="flex flex-col ">
   <h1 class="font-bold text-4xl text-center">Fournisseurs</h1>
 
-  <p class="fa fa-bars text-center">Tous les fournisseurs que vous avez trouvés qui distribuent les matériaux écologiques</p>
+  <p class="text-center">Tous les fournisseurs que vous avez trouvés qui distribuent les matériaux écologiques</p>
 
   <%= button_to "Ajouter un Fournisseur", new_supplier_path, method: :get,
     class:"bg-green-600 rounded-md grow-0 mt-2 mb-3 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" if policy(Supplier).create? %>
 
 </div>
-  <!--  Card Container -->
+<!--  Card Container -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center w-full ">
   <%= render @suppliers %>
+</div>
 
