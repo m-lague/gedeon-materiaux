@@ -6,7 +6,7 @@ class MaterialPolicy < ApplicationPolicy
   end
 
   def create?
-    true# Un utilisateur connecté peut créer un matériel
+    true# tout le monde
   end
 
   def show?

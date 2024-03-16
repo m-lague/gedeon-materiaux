@@ -1,35 +1,18 @@
 class UpvotesController < ApplicationController
-  before_action :set_item, :set_upvote
+  before_action :set_item, :set_upvote, only: :toggle_vote
+
 
   def toggle_vote
-    authorize @upvote
+    authorize Upvote
     if already_upvoted?
-      @upvote.destroy
-      respond_to do |format|
-        format.html { redirect_to materials_path }
-        format.turbo_stream
-      end
+      destroy
     else
-      @upvote = Upvote.new(item: @item, user: current_user)
-      authorize @upvote
-      if @upvote.save
-        flash[:notice] = "c'est fait!"
-        respond_to do |format|
-          format.html { redirect_to materials_path }
-          format.turbo_stream
-        end
-      else
-        flash[:notice] = "Vous devez vous connecter"
-        respond_to do |format|
-          format.html { redirect_to new_user_session_path }
-        end
-
-      end
-      redirect_to materials_path
+      create
     end
   end
 
   private
+
 
   def set_item
     @item = params[:item_type].constantize.find(params[:item_id])
@@ -43,5 +26,26 @@ class UpvotesController < ApplicationController
     @upvote
   end
 
+  def create
+    @upvote = current_user.upvotes.new(item: @item)
+    authorize @upvote
+    if @upvote.save
+      flash[:notice] = "c'est fait!"
+      respond_to do |format|
+        format.html { redirect_to materials_path }
+        format.turbo_stream
+      end
+    else
+      render materials_path, status: :unprocessable_entity
+    end
+  end
 
+  def destroy
+    authorize @upvote
+    @upvote.destroy
+    respond_to do |format|
+      format.html { redirect_to materials_path, notice: "Vous avez retiré votre vote"}
+      format.turbo_stream
+    end
+  end
 end

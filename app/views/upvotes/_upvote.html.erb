@@ -3,6 +3,6 @@
   flex-col items-center justify-center p-4">
   <i class=" fa-solid fa-caret-up text-gray-800"></i>
   <span class="text-lg font-semibold text-gray-800 leading-none">
-       <%= upvote_button(item)%>
+       <%= button_to item.upvotes.count, toggle_vote_path(item_id: item.id, item_type: item.class.to_s) %>
   </span>
 </div>
