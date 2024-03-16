@@ -1,2 +1,3 @@
 module UpvotesHelper
+
 end
