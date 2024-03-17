@@ -22,7 +22,7 @@ class SuppliersController < ApplicationController
     if @supplier.save
       redirect_to @supplier, notice: 'Supplier was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -35,14 +35,17 @@ class SuppliersController < ApplicationController
     if @supplier.update(supplier_params)
       redirect_to @supplier, notice: 'Supplier was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     authorize @supplier
     @supplier.destroy
-    redirect_to suppliers_url, notice: 'Supplier was successfully destroyed.'
+    respond_to do |format|
+      format.html { redirect_to suppliers_path, notice: "Supplier was successfully destroyed."}
+      format.turbo_stream
+    end
   end
 
   private

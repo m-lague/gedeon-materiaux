@@ -1,7 +1,8 @@
 <!-- app/views/suppliers/edit.html.erb -->
+<%= turbo_frame_tag "content" do%>
+  <h1>Edit Supplier</h1>
 
-<h1>Edit Supplier</h1>
+  <%= render 'form', supplier: @supplier %>
 
-<%= render 'form', supplier: @supplier %>
-
-<%= link_to 'Back', suppliers_path %>
+  <%= link_to 'Back', suppliers_path %>
+<%end%>

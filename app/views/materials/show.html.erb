@@ -1,42 +1,34 @@
-<p id="notice"><%= notice %></p>
-<div class="text-start">
+<%=turbo_frame_tag "content" do %>
+  <p id="notice"><%= notice %></p>
+  <div class="text-start">
 
-  <% if @material.image.attached? %>
-    <%= cl_image_tag @material.image.key %>
-  <% end %>
+    <% if @material.image.attached? %>
+      <%= cl_image_tag @material.image.key %>
+    <% end %>
 
-  <h2><%= @material.name %></h2>
+    <h2><%= @material.name %></h2>
 
-  <p class="description">
-    Description:
-    <%= @material.description %>
-  </p>
+    <p class="description">
+      Description:
+      <%= @material.description %>
+    </p>
 
 
-  <p>
-    <strong>Category:</strong>
-    <%= @material.category %>
-  </p>
-  <!--
-  <p>
-    <strong>Efficiency:</strong>
-    <%= @material.efficiency %>
-  </p>
+    <p>
+      <strong>Category:</strong>
+      <%= @material.category %>
+    </p>
 
-   <p>
-    <strong>Cost:</strong>
-    <%= number_to_currency(@material.cost, unit: "€") %>
-  </p>
-  -->
-</div>
+  </div>
 
-<h2>Fournisseurs <%= @material.name %>:</h2>
+  <h2>Fournisseurs <%= @material.name %>:</h2>
 
-<ul>
-  <% @material.suppliers.each do |supplier| %>
-    <li><%= link_to supplier.name, supplier %></li>
-  <% end %>
-</ul>
+  <ul>
+    <% @material.suppliers.each do |supplier| %>
+      <li><%= link_to supplier.name, supplier %></li>
+    <% end %>
+  </ul>
 
-<%= link_to "Editer", edit_material_path(@material) if policy(@material).update? %>
-<%= link_to 'Back', :back %>
+  <%= link_to "Editer", edit_material_path(@material) if policy(@material).update? %>
+  <%= link_to 'Back', :back%>
+<%end%>

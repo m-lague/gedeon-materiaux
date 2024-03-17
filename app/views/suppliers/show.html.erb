@@ -1,34 +1,35 @@
 <!-- app/views/suppliers/show.html.erb -->
+<%= turbo_frame_tag "content" do%>
+  <p id="notice"><%= notice %></p>
 
-<p id="notice"><%= notice %></p>
+  <section class="flex flex-row justify-around">
+    <div class="">
+      <% if @supplier.image.attached? %>
+        <%= image_tag @supplier.image, class: "w-32 sm:w-48" %>
+      <% end %>
+    </div>
+    <div class=" self-center sm:ml-32">
+      <p class="text-semibold text-3xl">
+        <%= @supplier.name %>
+      </p>
+      <p>
+        Localisation:
+        <%= @supplier.location %>
+      </p>
+      <h3>
+        <%= link_to "Voir le Fournisseur", @supplier.affiliate_link, class: "font-bold text-blue-500 text-lg", target: "_blank" unless @supplier.affiliate_link.nil?%>
+      </h3>
+    </div>
 
-<section class="flex flex-row justify-around">
-  <div class="">
-    <% if @supplier.image.attached? %>
-      <%= image_tag @supplier.image, class: "w-32 sm:w-48" %>
-    <% end %>
+  </section>
+
+
+  <h2 class="text-xl">Materiaux fournis par <%= @supplier.name %> :</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center w-full ">
+    <%= render @supplier.materials%>
   </div>
-  <div class=" self-center sm:ml-32">
-    <p class="text-semibold text-3xl">
-      <%= @supplier.name %>
-    </p>
-    <p>
-      Localisation:
-      <%= @supplier.location %>
-    </p>
-    <h3>
-      <%= link_to "Voir le Fournisseur", @supplier.affiliate_link, class: "font-bold text-blue-500 text-lg", target: "_blank" unless @supplier.affiliate_link.nil?%>
-    </h3>
-  </div>
 
-</section>
-
-
-<h2 class="text-xl">Materiaux fournis par <%= @supplier.name %> :</h2>
-
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center w-full ">
-  <%= render @supplier.materials%>
-</div>
-
-<%= link_to "Editer |", edit_supplier_path(@supplier) if policy(@supplier).update? %>
-<%= link_to 'Back', :back %>
+  <%= link_to "Editer |", edit_supplier_path(@supplier) if policy(@supplier).update? %>
+  <%= link_to 'Back', :back %>
+<%end%>
