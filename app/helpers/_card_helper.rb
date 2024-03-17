@@ -5,7 +5,7 @@ module CardHelper
   end
 
   def link_edit(item)
-    link_to "Modifier", [:edit, item] if policy(item).update?
+    link_to "Modifier", [:edit, item], data: {turbo_frame: "content"} if policy(item).update?
   end
 
 
