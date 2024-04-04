@@ -32,7 +32,6 @@
         </div>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <%= link_to "Matériaux", materials_path, class: if params[:controller] == "materials"
                                                               "bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                                                             else
@@ -113,7 +112,13 @@
                                                             else
                                                               "text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
                                                             end %>
+
       <%= link_to "Fournisseurs", suppliers_path, class: if params[:controller] == "suppliers"
+                                                              "bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
+                                                            else
+                                                              "text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
+                                                            end %>
+      <%= link_to "Systèmes Constructifs", construction_systems_path, class: if params[:controller] == "construction_systems"
                                                               "bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium"
                                                             else
                                                               "text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium"
