@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_29_183742) do
+ActiveRecord::Schema[7.0].define(version: 2024_04_04_081002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -57,7 +57,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_29_183742) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
+    t.integer "upvotes_count", default: 0, null: false
     t.index ["name"], name: "index_construction_systems_on_name", unique: true
+    t.index ["user_id"], name: "index_construction_systems_on_user_id"
+  end
+
+  create_table "material_construction_systems", force: :cascade do |t|
+    t.bigint "material_id", null: false
+    t.bigint "construction_system_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["construction_system_id"], name: "index_material_construction_systems_on_construction_system_id"
+    t.index ["material_id"], name: "index_material_construction_systems_on_material_id"
   end
 
   create_table "material_suppliers", force: :cascade do |t|
@@ -129,6 +141,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_29_183742) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "construction_systems", "users"
+  add_foreign_key "material_construction_systems", "construction_systems"
+  add_foreign_key "material_construction_systems", "materials"
   add_foreign_key "material_suppliers", "materials"
   add_foreign_key "material_suppliers", "suppliers"
   add_foreign_key "materials", "users"

@@ -15,7 +15,13 @@ class ConstructionSystemsController < ApplicationController
   end
 
   def create
-
+    @construction_system = current_user.construction_systems.build(construction_system_params)
+    authorize_construction_system
+    if @construction_system.save
+      redirect_to construction_systems_path, notice: "Système constructif créé avec succès"
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
 

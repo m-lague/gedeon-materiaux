@@ -1,0 +1,28 @@
+<%=turbo_frame_tag "content" do %>
+  <p id="notice"><%= notice %></p>
+  <div class="text-start">
+
+    <% if @construction_system.image.attached? %>
+      <%= cl_image_tag @construction_system.image.key %>
+    <% end %>
+
+    <h2><%= @construction_system.name %></h2>
+
+    <p class="description">
+      Description:
+      <%= @construction_system.description %>
+    </p>
+
+  </div>
+
+  <h2>Matériaux du système constructif:</h2>
+
+  <ul>
+    <% @construction_system.materials.each do |material| %>
+      <li><%= link_to material.name, material %></li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Editer", edit_construction_system_path(@construction_system) if policy(@construction_system).update? %>
+  <%= link_to 'Back', :back%>
+<%end%>
