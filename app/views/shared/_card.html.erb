@@ -41,7 +41,7 @@
 
     <!-- Upvotes -->
     <%= turbo_frame_tag dom_id(item, "upvote") do%>
-      <% if item.class == Material %>
+      <% if item.is_a?(Material) || item.is_a?(ConstructionSystem) %>
         <%=render 'upvotes/upvote', item: item %>
       <%end%>
     <%end%>

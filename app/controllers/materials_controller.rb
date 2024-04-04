@@ -44,7 +44,7 @@ class MaterialsController < ApplicationController
     authorize @material
     @material.destroy
     respond_to do |format|
-      format.html { redirect_to quotes_path, notice: "Quote was successfully destroyed."}
+      format.html { redirect_to materials_path, notice: "Matériau supprimé"}
       format.turbo_stream
     end
 

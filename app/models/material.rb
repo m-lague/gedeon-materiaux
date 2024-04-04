@@ -4,6 +4,8 @@ class Material < ApplicationRecord
   has_many :material_suppliers, dependent: :destroy
   has_many :suppliers, through: :material_suppliers
   has_many :upvotes, as: :item
+  has_many :material_construction_systems, dependent: :destroy
+  has_many :construction_systems, through: :material_construction_systems
 
   belongs_to :user
 
