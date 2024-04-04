@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :construction_systems
   devise_for :users
 
 

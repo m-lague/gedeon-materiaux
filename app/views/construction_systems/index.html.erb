@@ -1,0 +1,9 @@
+<div class="flex flex-col ">
+    <h1 class="font-bold text-4xl text-center">Systèmes Constructifs</h1>
+
+    <p class="text-center">Tous les Systèmes Constructifs écologiques réunis au même endroit</p>
+
+    <%= button_to "Ajouter un Système Constructif", new_construction_system_path, method: :get, data: {turbo_method: :get},
+      class:"bg-green-600 rounded-md grow-0 mt-2 mb-3 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" if policy(ConstructionSystem).create? %>
+
+  </div>
