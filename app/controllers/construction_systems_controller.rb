@@ -47,7 +47,7 @@ class ConstructionSystemsController < ApplicationController
   private
 
   def construction_system_params
-    params.require(:construction_system).permit(:name, :description,:image)
+    params.require(:construction_system).permit(:name, :description,:image, material_ids: [])
   end
 
   def set_construction_system

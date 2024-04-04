@@ -26,6 +26,11 @@
     <%= form.file_field :image %>
   </div>
 
+  <div class="field">
+    <%= form.label :material_ids, 'Ajout des Materiaux' %>
+    <%= form.collection_select(:material_ids, Material.all, :id, :name, {}, { multiple: true }) %>
+  </div>
+
 
   <div class="actions">
     <%= form.submit "Envoyer", class: "btn btn-form" %>
