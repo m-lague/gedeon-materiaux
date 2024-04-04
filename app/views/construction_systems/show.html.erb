@@ -17,11 +17,9 @@
 
   <h2>Matériaux du système constructif:</h2>
 
-  <ul>
-    <% @construction_system.materials.each do |material| %>
-      <li><%= link_to material.name, material %></li>
-    <% end %>
-  </ul>
+ <div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center w-full ">
+    <%= render @construction_system.materials%>
+  </div>
 
   <%= link_to "Editer", edit_construction_system_path(@construction_system) if policy(@construction_system).update? %>
   <%= link_to 'Back', :back%>
