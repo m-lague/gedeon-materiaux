@@ -37,7 +37,11 @@ class ConstructionSystemsController < ApplicationController
   end
 
   def destroy
-
+    @construction_system.destroy
+    respond_to do |format|
+      format.html { redirect_to construction_systems_path, notice: "Système constructif supprimé"}
+      format.turbo_stream
+    end
   end
 
   private
