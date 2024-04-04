@@ -29,7 +29,11 @@ class ConstructionSystemsController < ApplicationController
   end
 
   def update
-
+    if @construction_system.update(construction_system_params)
+      redirect_to construction_system_path , notice: 'Système constructif mis à jour'
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
@@ -39,7 +43,7 @@ class ConstructionSystemsController < ApplicationController
   private
 
   def construction_system_params
-    params.require(:construction_system).permit(:name, :description)
+    params.require(:construction_system).permit(:name, :description,:image)
   end
 
   def set_construction_system

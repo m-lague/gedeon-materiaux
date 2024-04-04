@@ -1,0 +1,9 @@
+<%= turbo_frame_tag "content" do %>
+  <h1>Modification du Système Constructif</h1>
+
+  <%= render 'form', construction_system: @construction_system %>
+
+  <%= link_to 'Show', @construction_system %> |
+  <%= link_to 'Back', :back %>
+
+<%end%>
