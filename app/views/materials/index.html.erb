@@ -1,17 +1,19 @@
-<%= turbo_frame_tag "content" do%>
-  <div class="flex flex-col ">
-    <h1 class="font-bold text-4xl text-center">Matériaux</h1>
+<div class="container lg:w-5/6 mx-auto p-6 md:px-0 mt-28 flex-col">
+  <%= turbo_frame_tag "content" do%>
+    <div class="flex flex-col ">
+      <h1 class="font-bold text-4xl text-center">Matériaux</h1>
 
-    <p class="text-center">Tous les matériaux écologiques réunis au même endroit</p>
+      <p class="text-center">Tous les matériaux écologiques réunis au même endroit</p>
 
-    <%= button_to "Ajouter un Matériau", new_material_path, method: :get, data: {turbo_method: :get},
-      class:"bg-green-600 rounded-md grow-0 mt-2 mb-3 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" if policy(Material).create? %>
+      <%= button_to "Ajouter un Matériau", new_material_path, method: :get, data: {turbo_method: :get},
+        class:"bg-green-600 rounded-md grow-0 mt-2 mb-3 py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700" if policy(Material).create? %>
 
-  </div>
+    </div>
 
-  <!--  Card Container -->
+    <!--  Card Container -->
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center w-full ">
-    <%= render @materials %>
-  </div>
-<%end%>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center w-full ">
+      <%= render @materials %>
+    </div>
+  <%end%>
+</div>
