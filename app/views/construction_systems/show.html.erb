@@ -2,7 +2,7 @@
   <p id="notice"><%= notice %></p>
 <!-- header -->
   <div class="static  max-h-screen overflow-hidden z-10 text-center">
-    <h2 class="absolute top-1/3 text-slate-100 z-50 w-full text-4xl font-bold uppercase">
+    <h2 class="absolute top-1/3 text-slate-100 z-50 w-full text-4xl md:text-6xl lg:text-9xl  uppercase">
       <%= @construction_system.name %>
     </h2>
     <% if @construction_system.image.attached? %>
@@ -16,13 +16,7 @@
 <!-- left column -->
     <div class="sm:w-1/4">
       <h2 class="font-bold mt-4 mb-2">Caractéristiques :</h2>
-      <p class=""> - Structure Bois: poutre en I<br>
-                  - Dalle Bois ou Dalle Béton
-                  - Isolation Fibre de Bois soufflée <br>
-                  - Toit Plat <br>
-                  - Bardage Bois ou Enduit <br>
-                  - Très peu d'inertie <br>
-                  - R = 6,7 m².K/W
+      <p class=""> <%= @construction_system.features%>
 
       </p>
 
