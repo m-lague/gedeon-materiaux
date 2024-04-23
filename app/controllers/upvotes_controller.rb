@@ -23,7 +23,7 @@ class UpvotesController < ApplicationController
   end
 
   def already_upvoted?
-    @upvote
+    @upvote # return true or nil
   end
 
   def create
