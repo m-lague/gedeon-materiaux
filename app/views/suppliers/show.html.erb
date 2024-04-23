@@ -29,6 +29,7 @@
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center w-full ">
     <%= render @supplier.materials%>
   </div>
+  <%= link_to "insta", "https://www.instagram.com/mathieulague/"%>
 
   <%= link_to "Editer |", edit_supplier_path(@supplier) if policy(@supplier).update? %>
   <%= link_to 'Back', :back %>
